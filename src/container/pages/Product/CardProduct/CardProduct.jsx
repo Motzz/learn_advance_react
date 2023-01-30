@@ -1,39 +1,7 @@
 import React, { Fragment, Component } from "react";
 import "./CardProduct.css";
-
+import Counter from "./Counter";
 class CardProduct extends Component {
-  state = {
-    order: 0,
-  };
-  handleCounterChange = (parameterValue) => {
-    this.props.onCounterChange(parameterValue);
-  };
-  handlePlus = () => {
-    this.setState(
-      {
-        order: (this.state.order += 1),
-      },
-      () => {
-        this.handleCounterChange(this.state.order);
-      }
-    );
-  };
-  handleMin = () => {
-    if (this.state.order <= 0) {
-      this.setState({
-        order: (this.state.order = 0),
-      });
-    }
-    this.setState(
-      {
-        order: (this.state.order -= 1),
-      },
-      () => {
-        this.handleCounterChange(this.state.order);
-      }
-    );
-  };
-
   render() {
     return (
       <>
@@ -43,16 +11,8 @@ class CardProduct extends Component {
           </div>
           <p className="product-title">Buah Naga</p>
           <p className="product-price">Rp. 20,000</p>
-          <div className="counter">
-            <button className="plus" onClick={this.handleMin}>
-              -
-            </button>
-            <input type="text" value={this.state.order} />
-
-            <button className="minus" onClick={this.handlePlus}>
-              +
-            </button>
-          </div>
+          <Counter /*onCounterChange={(value) => this.props.onCounterChange(value)}*/ />
+          {/* //kalo class props ga pake parameter di returnnya langsung aja this.props */}
         </div>
       </>
     );

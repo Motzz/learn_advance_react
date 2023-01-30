@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
 class LifeCycle extends Component {
   //yang sering dipake constructor->render->componentDidMount->componentDidUpdate->componentWillUnmount
   constructor(props) {
@@ -61,9 +61,15 @@ class LifeCycle extends Component {
         <p> LifeCycle Component</p>
         <hr />
         <button onClick={this.changeCount}>Component button{this.state.count}</button>
+        <p>total order : {this.props.order}</p>
       </>
     );
   }
 }
-
-export default LifeCycle;
+//STORE
+const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global yang ada di index.js*/) => {
+  return {
+    order: state.totalOrder,
+  };
+};
+export default connect(mapStateToProps_store)(LifeCycle);

@@ -1,16 +1,17 @@
 import React, { Fragment, Component } from "react";
 import "./Product.css";
 import CardProduct from "./CardProduct/CardProduct";
+import { connect } from "react-redux";
 class Product extends Component {
-  state = {
-    order: 0,
-  };
+  // state = {
+  //   order: 0,
+  // };
 
-  handleCounterChange = (newValue) => {
-    this.setState({
-      order: newValue,
-    });
-  };
+  // handleCounterChange = (newValue) => {
+  //   this.setState({
+  //     order: newValue,
+  //   });
+  // };
 
   render() {
     return (
@@ -24,14 +25,19 @@ class Product extends Component {
             </div>
             <div className="troley">
               <p>Logo Trolley Nanti pake gambar</p>
-              <div className="count">{this.state.order}</div>
+              <div className="count">{this.props.order}</div>
             </div>
           </div>
         </nav>
-        <CardProduct onCounterChange={(value) => this.handleCounterChange(value)} />
+        <CardProduct /*onCounterChange={(value) => this.handleCounterChange(value)}*/ />
       </Fragment>
     );
   }
 }
-
-export default Product;
+//STORE
+const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global yang ada di index.js*/) => {
+  return {
+    order: state.totalOrder,
+  };
+};
+export default connect(mapStateToProps_store)(Product);

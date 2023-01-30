@@ -4,6 +4,44 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./container/Home/Home";
 
+//=============REDUX=============REDUX===============REDUX==========REDUX==============REDUX======
+
+// import { ReactReduxContext } from "react-redux";
+// import redux from "redux";
+import { Provider } from "react-redux"; //penyedia global dari
+const redux = require("redux");
+const createStore = redux.createStore;
+
+const globalState = {
+  totalOrder: 0,
+};
+//2.REDUCER
+const rootReducer = (state = globalState, action) => {
+  if (action.type === "PLUS_ORDER") {
+    return {
+      ...state,
+      totalOrder: state.totalOrder + 1,
+    };
+  }
+  if (action.type === "MINUS_ORDER") {
+    if (state.totalOrder > 0) {
+      return {
+        ...state,
+        totalOrder: state.totalOrder - 1,
+      };
+    }
+    return {
+      ...state,
+      totalOrder: (state.totalOrder = 0),
+    };
+  }
+  return state;
+};
+//1.STORE
+const storeRedux = createStore(rootReducer);
+
+//=============REDUX=============REDUX===============REDUX==========REDUX==============REDUX======
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const HelloWorld = () => {
   return (
@@ -31,7 +69,9 @@ function FunctionComponent() {
 // }
 root.render(
   <React.StrictMode>
-    <Home />
+    <Provider store={storeRedux}>
+      <Home />
+    </Provider>
   </React.StrictMode>
 );
 // ReactDOM.render(helloWorld,document.getElementById("root"));
