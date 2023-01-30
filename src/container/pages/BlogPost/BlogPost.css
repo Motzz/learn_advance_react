@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  /* height: 500px; */
+}
+
+.section-title {
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #4a4a4a;
+}
