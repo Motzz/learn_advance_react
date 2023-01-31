@@ -9,34 +9,36 @@ import Home from "./container/Home/Home";
 // import { ReactReduxContext } from "react-redux";
 // import redux from "redux";
 import { Provider } from "react-redux"; //penyedia global dari
+import { createStore } from "redux";
+import rootReducer from "./redux/reducer/globalReducer";
 const redux = require("redux");
-const createStore = redux.createStore;
+// const createStore = redux.createStore;
 
-const globalState = {
-  totalOrder: 0,
-};
-//2.REDUCER
-const rootReducer = (state = globalState, action) => {
-  if (action.type === "PLUS_ORDER") {
-    return {
-      ...state,
-      totalOrder: state.totalOrder + 1,
-    };
-  }
-  if (action.type === "MINUS_ORDER") {
-    if (state.totalOrder > 0) {
-      return {
-        ...state,
-        totalOrder: state.totalOrder - 1,
-      };
-    }
-    return {
-      ...state,
-      totalOrder: (state.totalOrder = 0),
-    };
-  }
-  return state;
-};
+// const globalState = {
+//   totalOrder: 0,
+// };
+// //2.REDUCER
+// const rootReducer = (state = globalState, action) => {
+//   if (action.type === "PLUS_ORDER") {
+//     return {
+//       ...state,
+//       totalOrder: state.totalOrder + 1,
+//     };
+//   }
+//   if (action.type === "MINUS_ORDER") {
+//     if (state.totalOrder > 0) {
+//       return {
+//         ...state,
+//         totalOrder: state.totalOrder - 1,
+//       };
+//     }
+//     return {
+//       ...state,
+//       totalOrder: (state.totalOrder = 0),
+//     };
+//   }
+//   return state;
+// };
 //1.STORE
 const storeRedux = createStore(rootReducer);
 
@@ -69,9 +71,10 @@ function FunctionComponent() {
 // }
 root.render(
   <React.StrictMode>
-    <Provider store={storeRedux}>
+    {/* <Provider store={storeRedux}>
       <Home />
-    </Provider>
+    </Provider> */}
+    <Home />
   </React.StrictMode>
 );
 // ReactDOM.render(helloWorld,document.getElementById("root"));

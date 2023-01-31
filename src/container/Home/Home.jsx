@@ -1,5 +1,5 @@
 //libraries
-import React, { Fragment } from "react";
+import React, { Fragment, createContext } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 //pages
@@ -10,11 +10,27 @@ import BlogPost from "../pages/BlogPost/BlogPost";
 import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
 //style
 import "./Home.css";
+import GlobalProvider from "../../context/context";
+
 //statefull component
 class Home extends React.Component {
-  state = {
-    showComponent: true,
-  };
+  // state = {
+  //   showComponent: true,
+  //   totalOrder: 5,
+  // };
+
+  // handleChangeStateDispatch = (action) => {
+  //   if (action.type === "PLUS_ORDER") {
+  //     return this.setState({
+  //       totalOrder: this.state.totalOrder + 1,
+  //     });
+  //   }
+  //   if (action.type === "MINUS_ORDER") {
+  //     return this.setState({
+  //       totalOrder: this.state.totalOrder - 1,
+  //     });
+  //   }
+  // };
   componentDidMount() {
     // setTimeout(() => {
     //   this.setState({
@@ -27,6 +43,12 @@ class Home extends React.Component {
       <>
         <div>
           <Router>
+            {/* <Provider
+              value={{
+                state: this.state,
+                dispatch: this.handleChangeStateDispatch,
+              }}
+            > */}
             {/* <p> Youtube Component</p>
             <hr />
             <YoutubeComp time="01.11" deskripsi="Lol" />
@@ -61,10 +83,12 @@ class Home extends React.Component {
                 <Route path="/youtube" element={<Youtube />} />
               </Routes>
             </Fragment>
+            {/* </Provider> */}
           </Router>
         </div>
       </>
     );
   }
 }
-export default Home;
+export default GlobalProvider(Home);
+// export default Home;

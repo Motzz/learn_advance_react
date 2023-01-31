@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { RootContext } from "../../Home/Home";
+import { GlobalConsumer } from "../../../context/context";
 class LifeCycle extends Component {
   //yang sering dipake constructor->render->componentDidMount->componentDidUpdate->componentWillUnmount
   constructor(props) {
@@ -57,11 +59,26 @@ class LifeCycle extends Component {
     console.log("render");
 
     return (
+      // <RootContext.Consumer>
+      //   {(value) => {
+      //     return (
+      //       <>
+      //         <p> LifeCycle Component</p>
+      //         <hr />
+      //         <button onClick={this.changeCount}>Component button{this.state.count}</button>
+      //         {/* <p>total order : {this.props.order}</p> */}
+      //         <p>total order : {value.state.totalOrder}</p>
+      //       </>
+      //     );
+      //   }}
+      // </RootContext.Consumer>
+
       <>
         <p> LifeCycle Component</p>
         <hr />
         <button onClick={this.changeCount}>Component button{this.state.count}</button>
-        <p>total order : {this.props.order}</p>
+        {/* <p>total order : {this.props.order}</p> */}
+        <p>total order : {this.props.state.totalOrder}</p>
       </>
     );
   }
@@ -72,4 +89,6 @@ const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global 
     order: state.totalOrder,
   };
 };
-export default connect(mapStateToProps_store)(LifeCycle);
+// export default connect(mapStateToProps_store)(LifeCycle);
+// export default LifeCycle;
+export default GlobalConsumer(LifeCycle);

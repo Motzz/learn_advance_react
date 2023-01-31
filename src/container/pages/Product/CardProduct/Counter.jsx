@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux"; //reduxxxxxxxxxxxxxxxxxxx
+import ActionType from "../../../../redux/reducer/globalActionType";
+import { RootContext } from "../../../Home/Home";
+import { GlobalConsumer } from "../../../../context/context";
 class Counter extends Component {
   //   state = {
   //     order: 0,
@@ -34,32 +37,71 @@ class Counter extends Component {
   //   };
 
   render() {
-    console.log(this.props);
+    // console.log(this.props);
+    //redux
+    // return (
+    //   <div className="counter">
+    //     <button className="plus" onClick={this.props.handleMin}>
+    //       -
+    //     </button>
+    //     <input type="text" value=/*{this.state.order}*/ {this.props.order} />
+
+    //     <button className="minus" onClick={this.props.handlePlus}>
+    //       +
+    //     </button>
+    //   </div>
+    // );
+
+    //state
+    // return (
+    //   <RootContext.Consumer>
+    //     {(value) => {
+    //       console.log(value);
+    // return (
+    //   <div className="counter">
+    //     <button className="plus" onClick={() => value.dispatch({ type: "MINUS_ORDER" })}>
+    //       -
+    //     </button>
+    //     <input type="text" value=/*{this.state.order}*/ {value.state.totalOrder} />
+
+    //     <button className="minus" onClick={() => value.dispatch({ type: "PLUS_ORDER" })}>
+    //       +
+    //     </button>
+    //   </div>
+    // );
+    //     }}
+    //   </RootContext.Consumer>
+    // );
+    console.log(this);
+
     return (
       <div className="counter">
-        <button className="plus" onClick={this.props.handleMin}>
+        <button className="plus" onClick={() => this.props.dispatch({ type: "MINUS_ORDER" })}>
           -
         </button>
-        <input type="text" value=/*{this.state.order}*/ {this.props.order} />
+        <input type="text" value=/*{this.state.order}*/ {this.props.state.totalOrder} />
 
-        <button className="minus" onClick={this.props.handlePlus}>
+        <button className="minus" onClick={() => this.props.dispatch({ type: "PLUS_ORDER" })}>
           +
         </button>
       </div>
     );
   }
 }
+//redux
 //STORE
-const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global yang ada di index.js*/) => {
+const mapStateToProps_store = (state) => {
   return {
     order: state.totalOrder,
   };
 };
 //DISPATCH
-const mapDispatchToProps_dispatch = (dispatch /*untuk type di global index.js*/) => {
+const mapDispatchToProps_dispatch = (dispatch) => {
   return {
-    handlePlus: () => dispatch({ type: "PLUS_ORDER" }),
-    handleMin: () => dispatch({ type: "MINUS_ORDER" }),
+    handlePlus: () => dispatch({ type: ActionType.PLUS_ORDER }),
+    handleMin: () => dispatch({ type: ActionType.MINUS_ORDER }),
   };
 };
-export default connect(mapStateToProps_store, mapDispatchToProps_dispatch)(Counter);
+// export default connect(mapStateToProps_store, mapDispatchToProps_dispatch)(Counter);
+// export default Counter;
+export default GlobalConsumer(Counter);
