@@ -77,18 +77,18 @@ class LifeCycle extends Component {
         <p> LifeCycle Component</p>
         <hr />
         <button onClick={this.changeCount}>Component button{this.state.count}</button>
-        {/* <p>total order : {this.props.order}</p> */}
+        {/* <p>total order : {this.props.orddfdfer}</p> */}
         <p>total order : {this.props.state.totalOrder}</p>
       </>
     );
   }
 }
 //STORE
-const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global yang ada di index.js*/) => {
-  return {
-    order: state.totalOrder,
-  };
-};
+// const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global yang ada di globalReducer.js*/) => {
+//   return {
+//     orddfdfer: state.totalOrder,
+//   };
+// };
 // export default connect(mapStateToProps_store)(LifeCycle);
 // export default LifeCycle;
 export default GlobalConsumer(LifeCycle);

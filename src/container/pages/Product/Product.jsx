@@ -17,6 +17,24 @@ class Product extends Component {
 
   render() {
     return (
+      // <Fragment>
+      //   <nav>
+      //     <p> Product Component</p>
+      //     <hr />
+      //     <div className="header">
+      //       <div className="logo">
+      //         <p>Logo perusahaan Nanti pake gambar</p>
+      //       </div>
+      //       <div className="troley">
+      //         <p>Logo Trolley Nanti pake gambar</p>
+      //         <div className="count">{this.props.orderss}</div>
+      //         {/* <div className="count">{value.state.totalOrder}</div> */}
+      //       </div>
+      //     </div>
+      //   </nav>
+      //   <CardProduct /*onCounterChange={(value) => this.handleCounterChange(value)}*/ />
+      // </Fragment>
+
       // <RootContext.Consumer>
       //   {(value) => {
       //     return (
@@ -62,11 +80,11 @@ class Product extends Component {
   }
 }
 //STORE REDUX
-const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global yang ada di index.js*/) => {
-  return {
-    order: state.totalOrder,
-  };
-};
+// const mapStateToProps_store = (state /*ini cuman penamaan parameter dari global yang ada di globalReducer.js*/) => {
+//   return {
+//     orderss: state.totalOrder,
+//   };
+// };
 // export default connect(mapStateToProps_store)(Product);
 // export default Product;
 export default GlobalConsumer(Product);

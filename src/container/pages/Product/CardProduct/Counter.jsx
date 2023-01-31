@@ -41,12 +41,12 @@ class Counter extends Component {
     //redux
     // return (
     //   <div className="counter">
-    //     <button className="plus" onClick={this.props.handleMin}>
+    //     <button className="plus" onClick={this.props.handleMin22dd}>
     //       -
     //     </button>
-    //     <input type="text" value=/*{this.state.order}*/ {this.props.order} />
+    //     <input type="text" value=/*{this.state.order}*/ {this.props.ordersdsd} />
 
-    //     <button className="minus" onClick={this.props.handlePlus}>
+    //     <button className="minus" onClick={this.props.handlePlus2d2d}>
     //       +
     //     </button>
     //   </div>
@@ -72,7 +72,7 @@ class Counter extends Component {
     //     }}
     //   </RootContext.Consumer>
     // );
-    console.log(this);
+    // console.log(this);
 
     return (
       <div className="counter">
@@ -90,18 +90,18 @@ class Counter extends Component {
 }
 //redux
 //STORE
-const mapStateToProps_store = (state) => {
-  return {
-    order: state.totalOrder,
-  };
-};
-//DISPATCH
-const mapDispatchToProps_dispatch = (dispatch) => {
-  return {
-    handlePlus: () => dispatch({ type: ActionType.PLUS_ORDER }),
-    handleMin: () => dispatch({ type: ActionType.MINUS_ORDER }),
-  };
-};
+// const mapStateToProps_store = (state) => {
+//   return {
+//     ordersdsd: state.totalOrder,
+//   };
+// };
+// //DISPATCH
+// const mapDispatchToProps_dispatch = (dispatch) => {
+//   return {
+//     handlePlus2d2d: () => dispatch({ type: ActionType.PLUS_ORDER }),
+//     handleMin22dd: () => dispatch({ type: ActionType.MINUS_ORDER }),
+//   };
+// };
 // export default connect(mapStateToProps_store, mapDispatchToProps_dispatch)(Counter);
 // export default Counter;
 export default GlobalConsumer(Counter);
