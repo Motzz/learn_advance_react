@@ -3,6 +3,7 @@ import "./BlogPost.css";
 import PostComponent from "../../../component/PostComponent/PostComponent";
 import axios from "axios";
 import { RouterContext } from "react-router-dom";
+import API from "../../../service";
 // import { withRouter } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 class BlogPost extends Component {
@@ -15,6 +16,7 @@ class BlogPost extends Component {
       body: "",
     },
     isUpdate: false,
+    comment: [],
     // navigate: useNavigate(),
   };
 
@@ -26,16 +28,42 @@ class BlogPost extends Component {
     //       post: json,
     //     })
     //   );
-    axios.get("http://localhost:3004/posts?_sort=id&_order=desc").then((response) =>
+    // axios.get("http://localhost:3004/posts?_sort=id&_order=desc").then((response) =>
+    //   this.setState({
+    //     post: response.data,
+    //   })
+    // );
+    API.getNewsBlog().then((result) => {
       this.setState({
-        post: response.data,
-      })
-    );
+        post: result,
+      });
+    });
+    // API.getComment().then((result) => {
+    //   this.setState({
+    //     comment: result,
+    //   });
+    // });
   };
   postDataAPI = () => {
-    axios.post("http://localhost:3004/posts", this.state.formBlogPost).then(
-      (response) => {
-        // alert(response.data.id);
+    // axios.post("http://localhost:3004/posts", this.state.formBlogPost).then(
+    //   (response) => {
+    //     // alert(response.data.id);
+    //     this.getPostAPI();
+    //     this.setState({
+    //       formBlogPost: {
+    //         userId: 1,
+    //         id: "",
+    //         title: "",
+    //         body: "",
+    //       },
+    //     });
+    //   },
+    //   (err) => {
+    //     console.log("error :", err);
+    //   }
+    // );
+    API.postNews(this.state.formBlogPost).then(
+      (res) => {
         this.getPostAPI();
         this.setState({
           formBlogPost: {
@@ -71,7 +99,7 @@ class BlogPost extends Component {
     //event.target untuk ngambil apa aja yang ada di input (hasil di console <input id="" type="text" name="content">)
     // console.log("obj dari formBlogPost", this.state.formBlogPost);
     // console.log("obj BARU", newDataPost);
-    console.log("berubah cok", event.target);
+    console.log("berubah oitt", event.target);
     let newDataPost = { ...this.state.formBlogPost }; // ini ngambil data lama
     let timeStamp = new Date().getTime();
     if (!this.state.isUpdate) {
@@ -152,6 +180,13 @@ class BlogPost extends Component {
           </button>
         </div>
         <div className="container">
+          {/* {this.state.comment.map((comments) => {
+            return (
+              <>
+                <p>{comments.email}</p>
+              </>
+            );
+          })} */}
           {this.state.post.map((post) => {
             return (
               <>
