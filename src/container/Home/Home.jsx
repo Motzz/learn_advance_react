@@ -8,6 +8,7 @@ import Product from "../pages/Product/Product";
 import LifeCycle from "../pages/LifeCycle/LifeCycle";
 import BlogPost from "../pages/BlogPost/BlogPost";
 import DetailPost from "../pages/BlogPost/DetailPost/DetailPost";
+import Hooks from "../pages/Hooks/Hooks";
 //style
 import "./Home.css";
 import GlobalProvider from "../../context/context";
@@ -73,6 +74,7 @@ class Home extends React.Component {
                 <Link to="/product">product</Link>
                 <Link to="/lifeCycle">lifeCycle</Link>
                 <Link to="/youtube">youtube</Link>
+                <Link to="/hooks">hook</Link>
               </div>
 
               <Routes>
@@ -81,6 +83,7 @@ class Home extends React.Component {
                 <Route path="/product" element={<Product />} />
                 <Route path="/lifeCycle" element={<LifeCycle />} />
                 <Route path="/youtube" element={<Youtube />} />
+                <Route path="/hooks" element={<Hooks />} />
               </Routes>
             </Fragment>
             {/* </Provider> */}
