@@ -80,8 +80,20 @@ class BlogPost extends Component {
     );
   };
   putDataToAPI = () => {
-    axios.put(`http://localhost:3004/posts/${this.state.formBlogPost.id}`, this.state.formBlogPost).then((response) => {
-      console.log(response);
+    // axios.put(`http://localhost:3004/posts/${this.state.formBlogPost.id}`, this.state.formBlogPost).then((response) => {
+    //   console.log(response);
+    //   this.getPostAPI();
+    //   this.setState({
+    //     isUpdate: false,
+    //     formBlogPost: {
+    //       userId: 1,
+    //       id: "",
+    //       title: "",
+    //       body: "",
+    //     },
+    //   });
+    // });
+    API.updateNews(this.state.formBlogPost, this.state.formBlogPost.id).then((response) => {
       this.getPostAPI();
       this.setState({
         isUpdate: false,
@@ -134,7 +146,8 @@ class BlogPost extends Component {
     // alert(dataPost);
     // console.log(dataPost);
     // console.log(dataPost.id);
-    axios.delete(`http://localhost:3004/posts/${idPost}`).then((response) => this.getPostAPI());
+    // axios.delete(`http://localhost:3004/posts/${idPost}`).then((response) => this.getPostAPI());
+    API.deleteNews(idPost).then((response) => this.getPostAPI());
   }
   handleDetail = (idPost) => {
     localStorage.setItem("idPost", idPost);

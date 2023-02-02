@@ -47,16 +47,22 @@
 
 import Get from "./get";
 import Post from "./post";
-
+import Put from "./put";
+import Delete from "./delete";
 const getNewsBlog = Get("posts?_sort=id&_order=desc", false);
 const getComment = Get("comments", true);
 
 const postNews = (data) => Post("posts", false, data);
 
+const updateNews = (data, id) => Put(`posts/${id}`, false, data);
+
+const deleteNews = (id) => Delete(`posts/${id}`, false);
 const API = {
   getNewsBlog,
   getComment,
   postNews,
+  updateNews,
+  deleteNews,
 };
 
 export default API;
